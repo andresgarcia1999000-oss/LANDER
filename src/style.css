@@ -1,0 +1,181 @@
+/* 
+  src/style.css
+  Lighting-fast, mobile-first vanilla CSS.
+  Premium Design matched to B.L.A.S.T blueprint (Advertorial + Custom Typeform-style Quiz).
+*/
+
+:root {
+  --primary-color: #035BFF; 
+  --primary-hover: #0044CC;
+  --quiz-btn-color: #035BFF;        /* Unified blue branding over previous green */
+  --quiz-btn-hover: #0044CC;
+  --bg-color: #f4f6fb;
+  --quiz-bg: #E8EDF4;               /* Light modern grey/blue */
+  --text-dark: #1e2022;
+  --text-body: #4a5056;
+  --text-muted: #8b95a1;
+  --border-color: #e4e9f2;
+  --card-bg: #ffffff;
+  --font-display: 'Outfit', sans-serif;
+  --font-body: 'Inter', sans-serif;
+  --orange-gradient: linear-gradient(180deg, #ff9b00 0%, #eb6100 100%);
+  --dashboard-dark: #121826;
+  --card-shadow: 0 10px 40px rgba(0,0,0,0.04);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: var(--font-body); background-color: var(--bg-color); color: var(--text-body); line-height: 1.65; font-size: 17px; -webkit-font-smoothing: antialiased; }
+
+/* ==================================
+   VIEW 1: ADVERTORIAL STYLES
+   ================================== */
+#advertorial-view { padding-bottom: 80px; }
+.top-nav { background: rgba(255, 255, 255, 0.95); padding: 12px 20px; border-bottom: 1px solid var(--border-color); position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 10px rgba(0,0,0,0.02); }
+.nav-content { max-width: 760px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; }
+.logo-text { font-family: var(--font-display); font-size: 1.3rem; font-weight: 800; color: var(--text-dark); }
+.advertisement { font-size: 0.65rem; color: var(--text-muted); letter-spacing: 1.5px; font-weight: 700; text-transform: uppercase; }
+
+.article-container { max-width: 760px; margin: 20px auto 40px; padding: 30px 24px; background: var(--card-bg); border-radius: 16px; box-shadow: var(--card-shadow); }
+.category-tag { display: inline-block; background: rgba(3, 91, 255, 0.1); color: var(--primary-color); font-weight: 700; font-size: 0.8rem; padding: 4px 12px; border-radius: 20px; margin-bottom: 15px; text-transform: uppercase; }
+.headline { font-family: var(--font-display); font-size: 2.2rem; font-weight: 800; line-height: 1.25; color: var(--text-dark); margin-bottom: 15px; }
+.subtitle { font-size: 1.25rem; color: var(--text-body); font-weight: 500; margin-bottom: 20px; }
+.author-info { display: flex; gap: 10px; font-size: 0.9rem; color: var(--text-muted); margin-bottom: 30px; font-weight: 500; }
+
+.img-wrapper { margin: 25px 0; text-align: center; }
+.img-wrapper.right-float { float: right; max-width: 45%; margin: 10px 0 15px 20px; }
+.article-image { width: 100%; border-radius: 12px; box-shadow: 0 8px 24px rgba(0,0,0,0.08); object-fit: cover; }
+.feature-image { width: 100%; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); }
+.img-caption { font-size: 0.85rem; color: var(--text-muted); margin-top: 8px; font-style: italic; }
+
+.content-body p { margin-bottom: 18px; font-size: 1.15rem; color: #333; }
+.highlight-text { color: var(--primary-color); background: rgba(3, 91, 255, 0.05); padding: 0 4px; border-radius: 4px; }
+.content-body h2 { font-family: var(--font-display); font-size: 1.8rem; font-weight: 800; margin: 40px 0 20px; color: var(--text-dark); clear: both; }
+.content-body h3 { font-family: var(--font-display); font-size: 1.4rem; font-weight: 700; margin: 30px 0 15px; color: var(--text-dark); clear: both; }
+
+.benefit-list { list-style: none; background: #f8fafc; padding: 24px; border-radius: 12px; margin: 25px 0; border: 1px solid var(--border-color); display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
+.benefit-list li { font-weight: 600; display: flex; align-items: center; gap: 10px; color: var(--text-dark); }
+@media(max-width: 500px) { .benefit-list { grid-template-columns: 1fr; } .img-wrapper.right-float { float: none; max-width: 100%; margin: 20px 0; } .headline { font-size: 1.7rem; } .quiz-slides { padding: 16px 18px 50px; } .quiz-slide h2 { font-size: 1.5rem; } .quiz-btn { padding: 15px 18px; font-size: 1.05rem; } }
+
+.testimonial-box { background: linear-gradient(145deg, #ffffff, #f0f4fb); padding: 25px; border-radius: 12px; margin: 24px 0; border-left: 5px solid var(--primary-color); }
+.cta-banner { background: linear-gradient(135deg, #035BFF 0%, #0044CC 100%); padding: 35px 25px; text-align: center; border-radius: 16px; margin: 45px 0; color: white; box-shadow: 0 15px 30px rgba(3, 91, 255, 0.2); clear: both; }
+.cta-banner h3 { font-family: var(--font-display); color: white; font-size: 1.8rem; margin-bottom: 10px; }
+.cta-banner p { color: rgba(255,255,255,0.9); margin-bottom: 20px; font-size: 1.1rem; }
+.disclaimer-text { font-size: 0.85rem; color: var(--text-muted); margin-top: 15px; text-align: center; display: block; }
+
+.start-quiz-btn { background: var(--primary-color); color: white; border: none; padding: 16px 36px; font-size: 1.1rem; font-family: var(--font-display); font-weight: 800; border-radius: 50px; cursor: pointer; transition: transform 0.2s, box-shadow 0.2s; width: 100%; max-width: 320px; box-shadow: 0 8px 25px rgba(3, 91, 255, 0.3); }
+.start-quiz-btn:active { transform: scale(0.96); }
+.cta-banner .start-quiz-btn { background: white; color: var(--primary-color); box-shadow: 0 8px 20px rgba(0,0,0,0.15); }
+.article-image, .content-body video { cursor: pointer; transition: opacity 0.2s; }
+.article-image:hover, .content-body video:hover { opacity: 0.85; }
+
+.sticky-cta { position: fixed; bottom: 0; left: 0; width: 100%; padding: 15px 20px; background: rgba(255,255,255,0.95); backdrop-filter: blur(10px); border-top: 1px solid var(--border-color); z-index: 99; }
+@media(min-width: 850px) { .sticky-cta { display: none; } }
+.sticky-btn { background: var(--primary-color); color: white; max-width: 100%; margin: 0 auto; display: block;}
+
+.site-footer { text-align: center; padding: 30px 20px 100px; font-size: 0.8rem; color: var(--text-muted); }
+.footer-links a { color: var(--primary-color); text-decoration: none; margin: 0 10px; }
+
+
+/* ==================================
+   VIEW 2: TYPEFORM-STYLE QUIZ COMPONENT 
+   ================================== */
+#quiz-view { background-color: var(--quiz-bg); min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 20px; overflow-y: auto; }
+#quiz-view.showing-result { align-items: flex-start; padding: 20px 20px 40px; }
+.quiz-container { width: 100%; max-width: 600px; background: white; border-radius: 20px; box-shadow: 0 25px 60px rgba(0,0,0,0.08); overflow: hidden; position: relative; }
+
+/* Dynamic Progress Indicator Top */
+.quiz-header-brand { display: flex; justify-content: space-between; align-items: center; padding: 25px 30px 10px; }
+.quiz-step-text { color: var(--primary-color); font-weight: 800; font-family: var(--font-display); font-size: 1.1rem; letter-spacing: 0.5px; }
+
+/* Animated Progress Bar at bottom of card */
+.quiz-progress-wrap { position: absolute; bottom: 0; left: 0; width: 100%; height: 6px; background: #f0f2f5; z-index: 10; }
+.progress-bar-fill { height: 100%; background: var(--primary-color); width: 10%; transition: width 0.6s cubic-bezier(0.22, 1, 0.36, 1); }
+
+.quiz-slides { position: relative; padding: 20px 30px 50px; min-height: 380px; display: flex; flex-direction: column; justify-content: center; }
+.quiz-slide { display: none; text-align: left; opacity: 0; }
+.quiz-slide.active { display: block; animation: slideUpFade 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+
+@keyframes slideUpFade { 
+  0% { opacity: 0; transform: translateY(30px) scale(0.98); } 
+  100% { opacity: 1; transform: translateY(0) scale(1); } 
+}
+
+.quiz-slide h2 { font-family: var(--font-display); font-size: 1.8rem; font-weight: 800; color: var(--text-dark); margin-bottom: 10px; line-height: 1.3; }
+.quiz-sub-desc { font-size: 1.05rem; color: var(--text-muted); margin-bottom: 35px; }
+
+/* Elevated Pill Buttons */
+.quiz-options { display: flex; flex-direction: column; gap: 14px; }
+.quiz-options.grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
+
+.quiz-btn { background: #f8fafc; color: var(--text-dark); border: 2px solid var(--border-color); padding: 18px 24px; font-size: 1.15rem; font-family: var(--font-body); font-weight: 600; border-radius: 50px; cursor: pointer; width: 100%; text-align: left; transition: all 0.25s ease; box-shadow: 0 2px 5px rgba(0,0,0,0.02); }
+.quiz-btn:active { transform: scale(0.97); }
+.quiz-btn:hover { border-color: var(--primary-color); background: rgba(3, 91, 255, 0.04); color: var(--primary-color); }
+.icon-btn { text-align: center; padding: 25px 20px; border-radius: 20px; }
+.btn-emoji { font-size: 2.8rem; margin-top: 10px; display: block; filter: grayscale(20%); transition: filter 0.3s; }
+.icon-btn:hover .btn-emoji { filter: grayscale(0%); }
+
+/* Minimal Typeform Inputs */
+.input-wrapper { display: flex; flex-direction: column; align-items: flex-start; width: 100%; margin: 10px 0 15px; position: relative; }
+.input-group { display: flex; align-items: flex-end; width: 100%; border-bottom: 3px solid var(--border-color); transition: border-color 0.3s; padding-bottom: 10px; }
+.input-group.error { border-bottom-color: #ef4444; }
+.input-group:focus-within { border-bottom-color: var(--primary-color); }
+.input-group input { padding: 0 10px 0 0; font-size: 2.5rem; font-family: var(--font-display); font-weight: 800; border: none; outline: none; width: 100%; color: var(--primary-color); background: transparent; }
+.input-group input::placeholder { color: #dce2eb; }
+.input-group .unit { font-size: 1.4rem; font-weight: 700; color: var(--text-muted); margin-bottom: 8px; }
+.error-msg { display: none; color: #ef4444; font-size: 0.95rem; padding-top: 10px; font-weight: 600; text-align: left; }
+
+.quiz-next-btn { background: var(--primary-color); color: white; border: none; padding: 18px 40px; font-size: 1.25rem; font-family: var(--font-display); font-weight: 800; border-radius: 50px; cursor: pointer; display: inline-flex; align-items: center; justify-content: center; gap: 10px; box-shadow: 0 8px 25px rgba(3, 91, 255, 0.3); transition: transform 0.2s; }
+.slide-btn { width: 100%; margin-top: 30px; }
+.quiz-next-btn:active { transform: scale(0.97); }
+
+/* Loader Slide */
+.load-slide { text-align: center; }
+.loader-spinner { border: 4px solid var(--border-color); border-top: 4px solid var(--primary-color); border-radius: 50%; width: 70px; height: 70px; animation: spin 0.8s cubic-bezier(0.4, 0, 0.2, 1) infinite; margin: 30px auto 40px auto; }
+@keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+.brand-pulse { color: var(--primary-color); font-size: 1.5rem !important; animation: pulse 1.5s ease-in-out infinite; }
+@keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.5; } }
+
+
+/* ==================================
+   VIEW 3: PREMIUM HEALTH DASHBOARD
+   ================================== */
+/* Completely redesigned distinct result UI */
+.dashboard-card { background: var(--dashboard-dark); padding: 30px; border-radius: 20px; color: white; margin-bottom: 25px; box-shadow: 0 20px 40px rgba(0,0,0,0.15); }
+.dashboard-title { font-family: var(--font-display); font-size: 1.5rem; font-weight: 800; margin-bottom: 20px; color: #fff; }
+
+.dashboard-metrics { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-bottom: 25px; }
+.metric-box { background: rgba(255,255,255,0.08); padding: 20px; border-radius: 12px; text-align: center; border: 1px solid rgba(255,255,255,0.1); }
+.metric-title { font-size: 0.8rem; font-weight: 700; color: rgba(255,255,255,0.6); text-transform: uppercase; letter-spacing: 1px; }
+.metric-val { font-size: 2.2rem; font-family: var(--font-display); font-weight: 800; margin: 5px 0; color: #fff; }
+.metric-fat { font-size: 0.9rem; font-weight: 600; color: #4ade80; } /* Highlight green for success metric */
+
+.dark-chart-wrapper { border-radius: 12px; overflow: hidden; border: 1px solid rgba(255,255,255,0.1); margin-bottom: 10px; }
+
+.modern-offer-box { background: linear-gradient(145deg, #ffffff, #f8fafc); border-radius: 20px; padding: 35px 25px; text-align: center; border: 1px solid var(--border-color); box-shadow: var(--card-shadow); margin-top: 10px; }
+.offer-subtext { color: var(--primary-color); font-weight: 800; text-transform: uppercase; font-size: 0.85rem; letter-spacing: 1px; margin-bottom: 10px; }
+.offer-headline { font-family: var(--font-display); font-size: 2rem; font-weight: 800; color: var(--text-dark); margin-bottom: 25px; line-height: 1.1; }
+
+.offer-product-img { width: 100%; max-width: 250px; margin-bottom: 20px; mix-blend-mode: multiply; }
+.price-tag-modern { display: flex; align-items: center; justify-content: center; gap: 15px; margin-bottom: 10px; }
+.modern-save { background: #fee2e2; color: #ef4444; padding: 6px 12px; border-radius: 30px; font-weight: 800; font-size: 0.85rem; }
+.price-new { color: var(--text-dark); font-size: 3rem; font-family: var(--font-display); font-weight: 800; line-height: 1; margin: 0; }
+
+.offer-btn-gradient { background: var(--orange-gradient); color: white; font-family: var(--font-display); font-weight: 800; width: 100%; border-radius: 50px; padding: 20px; font-size: 1.3rem; box-shadow: 0 10px 25px rgba(235, 97, 0, 0.35); text-decoration: none; display: flex; justify-content: center; align-items: center; transition: transform 0.2s, box-shadow 0.2s; }
+.offer-btn-gradient:hover { background: linear-gradient(180deg, #ffae33 0%, #eb6100 100%); transform: translateY(-2px); }
+
+.review-widget { margin-top: 40px; }
+.review-header { display: flex; align-items: center; gap: 10px; margin-bottom: 25px; }
+.review-stars { font-size: 1.3rem; color: #f59e0b; }
+.review-count { font-weight: 600; color: var(--text-muted); font-size: 0.95rem; }
+
+.modern-comment { background: #fff; padding: 20px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.03); margin-bottom: 15px; border: 1px solid var(--border-color); }
+.modern-comment-header { display: flex; align-items: center; gap: 12px; margin-bottom: 12px; }
+.mc-avatar { width: 44px; height: 44px; background: linear-gradient(135deg, #e4e9f2, #f4f6fb); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-family: var(--font-display); font-weight: 800; color: var(--text-muted); }
+.mc-avatar.brand { background: var(--primary-color); color: white; }
+.mc-name { font-weight: 800; color: var(--text-dark); display: flex; align-items: center; gap: 6px; }
+.mc-verified { color: var(--primary-color); }
+.mc-text { color: var(--text-body); font-size: 0.95rem; line-height: 1.5; }
+.mc-reply { margin-left: 30px; margin-top: 15px; }
+
+.mt-4 { margin-top: 30px; }
+.mb-2 { margin-bottom: 15px; }
