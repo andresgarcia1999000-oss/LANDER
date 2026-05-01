@@ -41,3 +41,12 @@
 - Verified `grep` finds zero remaining occurrences of `yourdietreviews` or any old campaign ID across the project
 - Build clean, redeployed to prod, dietreviewhub.com aliased to new deployment
 - ⚠ Still pending from user: `REDTRACK_CAMPAIGN_ID_ES`, `CLICKOUT_URL`, `WEBHOOK_URL`
+
+## 2026-05-01 — RedTrack pixel wired up for ES (checklist item 7 — ES done)
+- Replaced tracker init script in both `index.html` and `es/index.html`:
+  - script filename: `unilpclick.js` → `uniclick.js` (the old account used a different RedTrack script variant)
+  - `defaultcampaignid` filled in: `69f4fe9a187f0de37aedddeb`
+  - removed `async` attribute per RedTrack-provided snippet (loads synchronously)
+- Saved `REDTRACK_HOST=trk.dietreviewhub.com` and `REDTRACK_CAMPAIGN_ID_ES=69f4fe9a187f0de37aedddeb` in `.env.local`
+- Build clean, redeployed to prod
+- ⚠ Still pending: `CLICKOUT_URL` (offer button still inert) and `WEBHOOK_URL` (quiz submissions still fail)

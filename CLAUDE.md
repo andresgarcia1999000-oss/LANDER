@@ -58,16 +58,15 @@ Currently:
 
 Ask: **"What's the new site/brand name? Same name across languages or localized per language?"**
 
-### 7. RedTrack tracker (per language) — host swapped, campaign IDs PENDING
+### 7. RedTrack tracker (per language) — DONE for ES
 Each lander has this in `<head>`:
 ```html
-<script src="https://trk.dietreviewhub.com/unilpclick.js?attribution=lastpaid&cookiedomain=&cookieduration=90&defaultcampaignid=&regviewonce=false"></script>
+<script src="https://trk.dietreviewhub.com/uniclick.js?attribution=lastpaid&cookiedomain=&cookieduration=90&defaultcampaignid=69f4fe9a187f0de37aedddeb&regviewonce=false"></script>
 ```
 
-- Tracker host: `trk.dietreviewhub.com` ✓ (CNAME → `qm9iv.ttrk.io` set in Vercel DNS, domain added in RedTrack)
-- Campaign IDs: **EMPTY** — `defaultcampaignid=` is intentionally blank until user creates campaigns in the new RedTrack and provides them via `REDTRACK_CAMPAIGN_ID_ES` in `.env.local`
-
-When user provides the ES campaign ID, fill it into `defaultcampaignid=<id>` in both `index.html` and `es/index.html`.
+- Tracker host: `trk.dietreviewhub.com` ✓
+- ES campaign ID: `69f4fe9a187f0de37aedddeb` ✓
+- Note: script filename is `uniclick.js` (not `unilpclick.js` from the old setup) and loads synchronously (no `async`) per RedTrack guidance for the new account
 
 ### 8. Click-out URL (offer button on results page) — INERT
 The `href` on every `class="offer-btn-gradient"` link is currently `#` (no-op) so clicks can't accidentally route to the old company. When user provides `CLICKOUT_URL` in `.env.local` (typically a `https://trk.dietreviewhub.com/click?...` redirect), replace `#` with the real URL.
