@@ -50,3 +50,12 @@
 - Saved `REDTRACK_HOST=trk.dietreviewhub.com` and `REDTRACK_CAMPAIGN_ID_ES=69f4fe9a187f0de37aedddeb` in `.env.local`
 - Build clean, redeployed to prod
 - ⚠ Still pending: `CLICKOUT_URL` (offer button still inert) and `WEBHOOK_URL` (quiz submissions still fail)
+
+## 2026-05-01 — Click-out URL wired in (checklist item 8 done)
+- Set offer button `href` in both `index.html` and `es/index.html` to `https://trk.dietreviewhub.com/click`
+- The `/click` endpoint relies on the cookie set by the `uniclick.js` pixel on lander load — RedTrack will read the click ID + campaign from the cookie and redirect to the offer
+- SSL cert on `trk.dietreviewhub.com` issued by Let's Encrypt (notAfter Jul 30 2026); HTTPS confirmed working
+- Saved `CLICKOUT_URL` to `.env.local`
+- Build clean, redeployed to prod
+- ⚠ Still pending: `WEBHOOK_URL` for quiz submissions (must be set in Vercel dashboard env var, not just `.env.local`)
+- Note: 2 other `href="#"` links remain in each lander (inline "tienda oficial" link line 226, footer legal links line 278) — they were `#` in the original Purisaki template too, intentionally not changed; will need real legal page URLs eventually
