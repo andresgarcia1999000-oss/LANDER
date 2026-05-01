@@ -11,3 +11,8 @@
 - Added GitHub remote: https://github.com/andresgarcia1999000-oss/LANDER
 - Pushed initial commits to `origin/main`
 - Note: `public/images/img5.mov` is 81 MB (above GitHub's 50 MB warning threshold) — pushed fine but flagged for future
+
+## 2026-05-01 — Secrets file added
+- Created `.env.local` (gitignored) with placeholder slots for every secret/config the swap checklist needs
+- Updated `.gitignore` to also exclude `.env.local` and `.env.*.local` patterns
+- Going forward: drop tokens/IDs in `.env.local` instead of pasting in chat

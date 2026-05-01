@@ -4,4 +4,6 @@ dist/
 .venv/
 .tmp/
 .env
+.env.local
+.env.*.local
 .vercel
