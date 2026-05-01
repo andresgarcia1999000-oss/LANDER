@@ -23,3 +23,11 @@
 - Deleted orphaned per-language images: `logo-pt.{jpg,png}`, `logo-fr.jpg`, `product-box-pt.png`, `product-box-fr.jpg`, `form-chart-{pt,fr}.jpg`
 - Build verified — produces `/` (default ES) and `/es` only
 - Note: pt/fr branches still exist inside [src/main.js](src/main.js) language switch but are now dead — left untouched per CLAUDE.md rule
+
+## 2026-05-01 — First Vercel deploy + custom domain (checklist items 2 & 3)
+- Created Vercel project `omar` under team `omars-projects-61a04961`
+- Deployed to prod: https://omar-puce.vercel.app
+- Attached custom domain `dietreviewhub.com` (registered through Vercel — nameservers already pointing to ns1/ns2.vercel-dns.com, no registrar changes needed)
+- Verified: `https://dietreviewhub.com` returns HTTP 200 via Vercel edge
+- ⚠ Content is still 100% Purisaki — RedTrack tracker, click-out URL, webhook, product imagery, copy all need swapping (checklist items 5–15)
+- ⚠ `WEBHOOK_URL` env var not yet set in Vercel — quiz submissions will fail until it is
