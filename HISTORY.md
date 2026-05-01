@@ -16,3 +16,10 @@
 - Created `.env.local` (gitignored) with placeholder slots for every secret/config the swap checklist needs
 - Updated `.gitignore` to also exclude `.env.local` and `.env.*.local` patterns
 - Going forward: drop tokens/IDs in `.env.local` instead of pasting in chat
+
+## 2026-05-01 — Trimmed to ES-only (checklist item 4)
+- Deleted `pt/` and `fr/` lander folders
+- Removed `pt` and `fr` entries from [vite.config.js](vite.config.js)
+- Deleted orphaned per-language images: `logo-pt.{jpg,png}`, `logo-fr.jpg`, `product-box-pt.png`, `product-box-fr.jpg`, `form-chart-{pt,fr}.jpg`
+- Build verified — produces `/` (default ES) and `/es` only
+- Note: pt/fr branches still exist inside [src/main.js](src/main.js) language switch but are now dead — left untouched per CLAUDE.md rule
