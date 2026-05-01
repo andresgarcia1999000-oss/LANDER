@@ -31,3 +31,13 @@
 - Verified: `https://dietreviewhub.com` returns HTTP 200 via Vercel edge
 - ⚠ Content is still 100% Purisaki — RedTrack tracker, click-out URL, webhook, product imagery, copy all need swapping (checklist items 5–15)
 - ⚠ `WEBHOOK_URL` env var not yet set in Vercel — quiz submissions will fail until it is
+
+## 2026-05-01 — Old-domain sweep (checklist items 7 & 8 — partial)
+- Added Vercel DNS CNAME `trk.dietreviewhub.com` → `qm9iv.ttrk.io` (RedTrack edge); RedTrack SSL provisioning
+- Swapped tracker host in `<head>` of `index.html` and `es/index.html`: `trk.yourdietreviews.com` → `trk.dietreviewhub.com`
+- Cleared old default campaign ID from both tracker init scripts: `defaultcampaignid=` is now blank
+- Replaced offer button `href` from `https://trk.yourdietreviews.com/click` → `#` in both files (inert until real CLICKOUT_URL provided)
+- Updated CLAUDE.md items 7 & 8 to reflect new state
+- Verified `grep` finds zero remaining occurrences of `yourdietreviews` or any old campaign ID across the project
+- Build clean, redeployed to prod, dietreviewhub.com aliased to new deployment
+- ⚠ Still pending from user: `REDTRACK_CAMPAIGN_ID_ES`, `CLICKOUT_URL`, `WEBHOOK_URL`

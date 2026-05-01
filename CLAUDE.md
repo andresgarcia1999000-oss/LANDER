@@ -58,22 +58,19 @@ Currently:
 
 Ask: **"What's the new site/brand name? Same name across languages or localized per language?"**
 
-### 7. RedTrack tracker (per language)
+### 7. RedTrack tracker (per language) — host swapped, campaign IDs PENDING
 Each lander has this in `<head>`:
 ```html
-<script src="https://trk.yourdietreviews.com/unilpclick.js?attribution=lastpaid&cookiedomain=&cookieduration=90&defaultcampaignid=XXX&regviewonce=false"></script>
+<script src="https://trk.dietreviewhub.com/unilpclick.js?attribution=lastpaid&cookiedomain=&cookieduration=90&defaultcampaignid=&regviewonce=false"></script>
 ```
 
-Current campaign IDs:
-- ES: `69de7b4e734632dcf60ae89b`
-- PT: `69e674ba0a796ad2582542ec`
-- FR: `69e67a54d49d58c5422c64e1`
-- Tracker host: `trk.yourdietreviews.com`
+- Tracker host: `trk.dietreviewhub.com` ✓ (CNAME → `qm9iv.ttrk.io` set in Vercel DNS, domain added in RedTrack)
+- Campaign IDs: **EMPTY** — `defaultcampaignid=` is intentionally blank until user creates campaigns in the new RedTrack and provides them via `REDTRACK_CAMPAIGN_ID_ES` in `.env.local`
 
-Ask: **"What's the new RedTrack tracker host?"** Then **"Give me one campaign ID per language."** Replace ALL.
+When user provides the ES campaign ID, fill it into `defaultcampaignid=<id>` in both `index.html` and `es/index.html`.
 
-### 8. Click-out URL (offer button on results page)
-Search for `https://trk.yourdietreviews.com/click` — it's the `href` on every `class="offer-btn-gradient"` link in each lander. Ask: **"What's the new click-out URL?"** (Often this is a RedTrack `/click` redirect under their new tracker host.)
+### 8. Click-out URL (offer button on results page) — INERT
+The `href` on every `class="offer-btn-gradient"` link is currently `#` (no-op) so clicks can't accidentally route to the old company. When user provides `CLICKOUT_URL` in `.env.local` (typically a `https://trk.dietreviewhub.com/click?...` redirect), replace `#` with the real URL.
 
 ### 9. Webhook URL (quiz submissions)
 [api/submit-quiz.js](api/submit-quiz.js) reads `process.env.WEBHOOK_URL`. Ask: **"What webhook should quiz submissions POST to?"** Tell the user to set it as an env var in the Vercel dashboard (don't hardcode a secret URL in code).
