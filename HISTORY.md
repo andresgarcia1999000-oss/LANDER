@@ -65,3 +65,13 @@
 - Real root cause of the clickout not working was that the lander URL configured inside RedTrack was wrong (`trk.dietreviewhub.com/es` instead of `https://dietreviewhub.com/es/`); fixed by user inside RedTrack dashboard
 - With the correct lander URL set in RedTrack, `uniclick.js` + `/click` flow works without any link rewriting on our side
 - HTML now back to clean state: offer button is just `<a href="https://trk.dietreviewhub.com/click">…</a>` with no extra JS
+
+## 2026-05-01 — Swapped uniclick.js → unilpclick.js (the actual fix)
+- Side-by-side diff of `https://yourdietreviews.com/es/` (working) vs new lander showed only one difference: script filename — old uses `unilpclick.js`, new was using `uniclick.js`
+- Confirmed via downloading both scripts:
+  - `unilpclick.js` (LP variant, 183 lines) contains `document.querySelectorAll('a').forEach(...)` that rewrites every `/click` href to include `?clickid=<value>&referrer=<ref>`
+  - `uniclick.js` (universal variant, 202 lines) only sets the cookie — no link rewriting
+- Single-word change in both `index.html` and `es/index.html`: `uniclick.js` → `unilpclick.js`
+- LP variant is served on the new tracker domain too (same RedTrack backend, same campaign ID)
+- Updated CLAUDE.md item 7 with the rationale + warning to NOT use `uniclick.js`
+- Build clean, redeployed

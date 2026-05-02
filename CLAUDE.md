@@ -61,12 +61,12 @@ Ask: **"What's the new site/brand name? Same name across languages or localized 
 ### 7. RedTrack tracker (per language) — DONE for ES
 Each lander has this in `<head>`:
 ```html
-<script src="https://trk.dietreviewhub.com/uniclick.js?attribution=lastpaid&cookiedomain=&cookieduration=90&defaultcampaignid=69f4fe9a187f0de37aedddeb&regviewonce=false"></script>
+<script src="https://trk.dietreviewhub.com/unilpclick.js?attribution=lastpaid&cookiedomain=&cookieduration=90&defaultcampaignid=69f4fe9a187f0de37aedddeb&regviewonce=false"></script>
 ```
 
 - Tracker host: `trk.dietreviewhub.com` ✓
 - ES campaign ID: `69f4fe9a187f0de37aedddeb` ✓
-- Note: script filename is `uniclick.js` (not `unilpclick.js` from the old setup) and loads synchronously (no `async`) per RedTrack guidance for the new account
+- Script: **`unilpclick.js`** (LP variant — auto-rewrites every `<a href^="trk.dietreviewhub.com/click">` to append `?clickid=<value>` once the click ID cookie is set). Do NOT use `uniclick.js` — it only sets the cookie and skips the link rewriting, which causes `/click` to 400 with "empty clickid value" because the button hrefs go out without the param.
 
 ### 8. Click-out URL (offer button on results page) — INERT
 The `href` on every `class="offer-btn-gradient"` link is currently `#` (no-op) so clicks can't accidentally route to the old company. When user provides `CLICKOUT_URL` in `.env.local` (typically a `https://trk.dietreviewhub.com/click?...` redirect), replace `#` with the real URL.
