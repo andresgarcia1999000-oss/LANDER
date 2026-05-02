@@ -60,11 +60,8 @@
 - ⚠ Still pending: `WEBHOOK_URL` for quiz submissions (must be set in Vercel dashboard env var, not just `.env.local`)
 - Note: 2 other `href="#"` links remain in each lander (inline "tienda oficial" link line 226, footer legal links line 278) — they were `#` in the original Purisaki template too, intentionally not changed; will need real legal page URLs eventually
 
-## 2026-05-01 — Click-out actually working: append clickid from cookie
-- Diagnosed: hitting `https://trk.dietreviewhub.com/click` directly returns `{"status":0,"message":"empty clickid value"}` (HTTP 400)
-- Root cause: new RedTrack account uses `uniclick.js` (universal) not `unilpclick.js` (LP variant). `uniclick.js` only sets the `rtkclickid-store` cookie — it does NOT auto-rewrite anchor `href`s, which is what the Purisaki/`unilpclick.js` setup did transparently
-- Fix: added small inline script at bottom of `<body>` in both `index.html` and `es/index.html` that:
-  - reads `rtkclickid-store` cookie
-  - appends `?clickid=<value>` to every `<a href^="https://trk.dietreviewhub.com/click">` on initial load, again at 1500ms (XHR retry), and once more at click-time (capture phase) for the race-condition case
-  - hardened with try/catch on `new URL()` and idempotent (skips if `clickid` already present)
-- Build clean, redeployed
+## 2026-05-01 — Reverted clickid-append script (was unnecessary)
+- Reverted commit `bfdceb6` which added an inline cookie→clickid query-param rewriter
+- Real root cause of the clickout not working was that the lander URL configured inside RedTrack was wrong (`trk.dietreviewhub.com/es` instead of `https://dietreviewhub.com/es/`); fixed by user inside RedTrack dashboard
+- With the correct lander URL set in RedTrack, `uniclick.js` + `/click` flow works without any link rewriting on our side
+- HTML now back to clean state: offer button is just `<a href="https://trk.dietreviewhub.com/click">…</a>` with no extra JS
