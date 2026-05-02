@@ -644,5 +644,34 @@
   </div>
 
   <script type="module" src="../src/main.js"></script>
+
+  <script>
+  (function () {
+    function getClickId() {
+      var m = document.cookie.match(/(?:^|;\s*)rtkclickid-store=([^;]+)/);
+      return m ? decodeURIComponent(m[1]) : '';
+    }
+    function appendClickId(a) {
+      var cid = getClickId();
+      if (!cid) return;
+      try {
+        var u = new URL(a.href);
+        if (!u.searchParams.has('clickid')) {
+          u.searchParams.set('clickid', cid);
+          a.href = u.toString();
+        }
+      } catch (e) {}
+    }
+    function rewriteAll() {
+      document.querySelectorAll('a[href^="https://trk.dietreviewhub.com/click"]').forEach(appendClickId);
+    }
+    rewriteAll();
+    setTimeout(rewriteAll, 1500);
+    document.addEventListener('click', function (e) {
+      var a = e.target.closest('a[href^="https://trk.dietreviewhub.com/click"]');
+      if (a) appendClickId(a);
+    }, true);
+  })();
+  </script>
 </body>
 </html>
